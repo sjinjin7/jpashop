@@ -1,9 +1,8 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -18,6 +17,9 @@ public class Member {
     private String zipcode;
 
     /*getter의 경우는 크게 신경 안 써도 되지만, Setter의 경우 유지보수성을 생가해서 신중하게 만드는 것이 좋다*/
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
